@@ -4,7 +4,6 @@ import {Button, TextField} from "@material-ui/core";
 import {signInWithGoogle} from "../../firebase/firebase.utils";
 import InputWithAdornmentComponent from "../../components/input-with-adornment/input-with-adornment.component";
 
-
 const INITIAL_STATE = {
     signInEmail: {value: '', touched: false, error: ''},
     signInPassword: {value: '', touched: false, error: ''},
@@ -16,7 +15,6 @@ const INITIAL_STATE = {
 
 }
 
-
 function AuthPage(props) {
     const [formFields, setFormFields] = useState(INITIAL_STATE);
     const formatErrStatus = (name) => {
@@ -27,15 +25,14 @@ function AuthPage(props) {
     const formatHelperText = (name) => (formFields[name].touched && formFields[name].error ? formFields[name].error : '')
     const handleSubmit = (type) => event => {
         if (type === 'signIn') {
-            if (!formFields.signInEmail.error && !formFields.signInPassword.error)
+            if (!formFields.signInEmail.error && !formFields.signInPassword.error) {
                 console.log('handle sign in')
-            else
-                console.log('handle sign in denied')
+            }
         } else if (type === 'signUp') {
-            if (!formFields.displayName.error && !formFields.signUpEmail.error && !formFields.signUpPassword.error && !formFields.signUpConfirmPassword.error)
+            if (!formFields.displayName.error && !formFields.signUpEmail.error && !formFields.signUpPassword.error &&
+                !formFields.signUpConfirmPassword.error) {
                 console.log('handle sign up')
-            else
-                console.log('handle sign up denied')
+            }
         }
     }
     const validateField = (formFields) => {

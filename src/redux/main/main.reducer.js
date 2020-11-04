@@ -4,31 +4,31 @@ const INITIAL_STATE = [
     {
         name: 'overalls',
         route: '/categories/overalls',
-        pic: '/main-images/overalls.jpg',
+        pic: '/main-images/overalls.webp',
         blockType: 'MediumCategory'
     },
     {
         name: 'socks',
         route: '/categories/socks',
-        pic: '/main-images/socks.jpg',
+        pic: '/main-images/socks.webp',
         blockType: 'MediumCategory'
     },
     {
         name: 'hats',
         route: '/categories/hats',
-        pic: '/main-images/hats.jpg',
+        pic: '/main-images/hats.webp',
         blockType: 'MediumCategory'
     },
     {
         name: 'dogs',
         route: '/categories/dogs',
-        pic: '/main-images/dogs.jpg',
+        pic: '/main-images/dogs.webp',
         blockType: 'LargeCategory'
     },
     {
         name: 'cats',
         route: '/categories/cats',
-        pic: '/main-images/cats.jpg',
+        pic: '/main-images/cats.webp',
         blockType: 'LargeCategory'
     },
 ]
