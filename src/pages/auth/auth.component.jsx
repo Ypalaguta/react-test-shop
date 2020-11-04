@@ -8,8 +8,8 @@ function AuthPage(props) {
     const [showSignInPassword, setShowSignInPassword] = useState(false);
     const [showSignUpPassword, setShowSignUpPassword] = useState(false);
     const [showSignUpConfirmPassword, setShowSignUpConfirmPassword] = useState(false);
-    const handleClickShowPassword = (setter, field) => () => setter(!field)
-    const handleMouseDownPassword = (event) => event.preventDefault()
+    const handleClickShowPassword = (setter, field) => () => setter(!field);
+    const handleMouseDownPassword = (event) => event.preventDefault();
     return (
         <AuthContainer>
             <div>
