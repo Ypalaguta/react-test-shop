@@ -74,7 +74,7 @@ function AuthPage(props) {
         // validateField(event.target.name, event.target.value)
 
     }
-    console.log(formFields)
+    // console.log(formFields)
     return (
         <AuthContainer>
             <div>
