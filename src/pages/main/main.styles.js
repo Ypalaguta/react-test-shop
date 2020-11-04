@@ -24,16 +24,17 @@ const categoriesBasis = `
         opacity: 0.9;
     }
     position: relative;
+    background-position: center center;
 `;
 
-const MediumCategory = `
+export const MediumCategory = styled(Link)`
     ${categoriesBasis}
     height: 240px;
     border: 1px solid black;
     flex: auto;
 `;
 
-const LargeCategory = `
+export const LargeCategory = styled(Link)`
     ${categoriesBasis}
     height: 380px;
     border: 1px solid black;
@@ -41,44 +42,11 @@ const LargeCategory = `
     margin-top: 9px;
 `;
 
-export const OverallsBlock = styled(Link)`
-    ${MediumCategory}
-    .bg{
-        background-image: url('/tempImages/overall.jpg');
-        background-position: 0px -35px;
-    }
-`;
-export const SocksBlock = styled(Link)`
-    ${MediumCategory}
-    .bg{
-        background-image: url('/tempImages/socks.jpg');
-    }
-`;
-export const HatsBlock = styled(Link)`
-    ${MediumCategory}
-    .bg{
-        background-image: url('/tempImages/hats.jpg');
-        background-position: center;
-    }
-`;
-export const DogsBlock = styled(Link)`
-    ${LargeCategory}
-    .bg{
-        background-image: url('/tempImages/dog-1.jpg');
-    }
-`;
-export const CatsBlock = styled(Link)`
-    ${LargeCategory}
-    .bg{
-        background-image: url('/tempImages/cat-1.jpg');
-    }
-`;
-export const Bg = styled.div.attrs({
-    className: 'bg'
-})`
+export const Bg = styled.div`
     position:absolute;
     width: 100%;
     height: 100%;
     background-size: cover;
     margin: -5px;
+    background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;

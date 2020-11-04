@@ -1,30 +1,28 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const data = {
-    overalls: [],
-    socks: [],
-    hats: [],
-    dogs: [],
-    cats: [],
-}
+import {CategoryPicture, CategoryContainer, PriceRow, AddToCart} from './category-items.style.js';
+import {cartItemAdd} from "../../redux/cart/cart.actions";
 
 function CategoryItems(props) {
-    console.log(props);
-    const { match } = props;
-    const categoryName = match.path.replace(/.+\//,'');
-    const data = [];
+    const {match, categories, cartAddItem} = props;
+    const categoryName = match.path.replace(/.+\//, '');
+    const data = categories[categoryName];
     return (
         <div>
-            <div>{categoryName}</div>
-            {data.map(el => {
-                <div>
-                    <div>{el.bg}</div>
-                    <div>{el.name}</div>
-                    <div>{el.price}$</div>
-                </div>
-            })}
+            <h1>{categoryName}</h1>
+            {data.map((el, num) => <CategoryContainer key={num}>
+                    <AddToCart className='addToCart' onClick={() => {
+                        cartAddItem(el)
+                    }}> Add to cart </AddToCart>
+                    <CategoryPicture imageUrl={el.pic}/>
+                    <PriceRow><span>{el.name}</span> <span>{el.price}$</span></PriceRow>
+                </CategoryContainer>
+            )}
         </div>
     );
 }
 
-export default CategoryItems;
+export default connect(store => ({
+    categories: store.categories
+}), {cartAddItem: cartItemAdd})(CategoryItems);

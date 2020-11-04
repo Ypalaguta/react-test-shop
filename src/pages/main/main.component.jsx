@@ -1,33 +1,28 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 // import {defaut as MainPageContainer} from './main.styles'
-import { default as MainPageContainer, SocksBlock, HatsBlock, OverallsBlock, DogsBlock, CatsBlock, Bg} from './main.styles'
+import { default as MainPageContainer, LargeCategory, MediumCategory, Bg} from './main.styles'
 
 function MainPage(props) {
+    const {main} = props
+    const availableBlockTypes = {LargeCategory, MediumCategory}
     return (
         <MainPageContainer>
-            <OverallsBlock to='/categories/overalls'>
-                <Bg/>
-                <span>Overalls</span>
-            </OverallsBlock>
-            <SocksBlock to='/categories/socks'>
-                <Bg/>
-                <span>Socks</span>
-            </SocksBlock>
-            <HatsBlock to='/categories/hats'>
-                <Bg/>
-                <span>Hats</span>
-            </HatsBlock>
-            <DogsBlock to='/categories/dogs'>
-                <Bg/>
-                <span>Dogs</span>
-            </DogsBlock>
-            <CatsBlock to='/categories/cats'>
-                <Bg/>
-                <span>Cats</span>
-            </CatsBlock>
+            {
+                main.map((el, num)=> {
+                    const BlockType = availableBlockTypes[el.blockType];
+                    return <BlockType to={el.route} key={num}>
+                        <Bg imageUrl={el.pic} className='bg'/>
+                        <span>{el.name}</span>
+                        {/*{el.pic}*/}
+                    </BlockType>
+                })
+            }
         </MainPageContainer>
     );
 }
 
-export default MainPage;
+export default connect(store=>({
+    main: store.main
+}))(MainPage);
