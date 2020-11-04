@@ -1,9 +1,10 @@
 import {React, conte, useState} from 'react';
 import {connect} from 'react-redux';
-import {toggleCart} from '../../redux/cart/cart.actions'
-import HeaderIcon from '../header-icon/header-icon.styles'
+import {toggleCart} from '../../redux/cart/cart.actions';
+import HeaderIcon from '../header-icon/header-icon.styles';
+import { Link } from 'react-router-dom';
 
-import {default as HeaderContainer, HeaderLink, IconLink, LinkLike} from './header.styles'
+import {default as HeaderContainer, HeaderLink, HeaderIconWrap, LinkLike} from './header.styles';
 import CartComponent from "../cart-popup/cart.component";
 import {createStructuredSelector} from "reselect";
 import {selectCart} from "../../redux/cart/cart.selectors";
@@ -20,9 +21,11 @@ const countAndGetItemsCount = (cartObject) => {
 function Header(props) {
     const {cart} = props;
     return (<HeaderContainer>
-            <IconLink to='/'>
-                <HeaderIcon src='/pet-icon.jpg'/>
-            </IconLink>
+            <HeaderIconWrap to='/'>
+                <Link to='/'>
+                    <HeaderIcon src='/pet-icon.jpg'/>
+                </Link>
+            </HeaderIconWrap>
             <HeaderLink to='/'>Shop</HeaderLink>
             <HeaderLink to='/contacts'>Contacts</HeaderLink>
             <HeaderLink to='/auth'>Sign In</HeaderLink>

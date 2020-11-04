@@ -9,7 +9,7 @@ export default styled.div`
     justify-content: flex-end;
 `;
 
-export const IconLink = styled(Link)`
+export const HeaderIconWrap = styled.div`
     flex: auto;
 `;
 
