@@ -2,7 +2,9 @@ import { React, useState } from 'react';
 import { TextField, InputAdornment, IconButton, Input, FormControl, InputLabel, Button } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-import { AuthContainer, ButtonsRow } from './auth.styles'
+import { AuthContainer, ButtonsRow } from './auth.styles';
+
+import {signInWithGoogle} from '../../firebase/firebase.utils.js';
 
 function AuthPage(props) {
     const [showSignInPassword, setShowSignInPassword] = useState(false);
@@ -32,7 +34,7 @@ function AuthPage(props) {
                 </FormControl >
                 <ButtonsRow>
                     <Button color="primary">Sign in</Button>
-                    <Button variant="contained" color="primary">Sign in with Google</Button>
+                    <Button variant="contained" color="primary" onClick={signInWithGoogle}>Sign in with Google</Button>
                 </ButtonsRow>
             </div>
             <div>
@@ -70,7 +72,7 @@ function AuthPage(props) {
                 </FormControl >
                 <ButtonsRow>
                     <Button color="primary">Sign up</Button>
-                    <Button variant="contained" color="primary">Sign up with Google</Button>
+                    <Button variant="contained" color="primary" onClick={signInWithGoogle}>Sign up with Google</Button>
                 </ButtonsRow>
             </div>
         </AuthContainer>
