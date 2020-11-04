@@ -20,20 +20,21 @@ import {
     AddBlock,
     RemoveOneBlock,
 } from './cart.style';
+import {selectMain} from "../../redux/main/main.selectors";
 
 const findCategoryOnMain = (main, category) => {
     return main.find(el => el.name === category);
 }
 
 function CartComponent(props) {
-    const {userStatus, toggleCart, cart, categories, cartItemDecrease, cartItemRemove, cartItemAdd} = props;
+    const {userStatus, toggleCart, cart, main, cartItemDecrease, cartItemRemove, cartItemAdd} = props;
     return props.visible ? (
         <CartContainer>
             <CartItemsWrap>
                 {Object.keys(cart.items).map((key, num) => {
                     let el = cart.items[key];
                     return <CartItem key={num}>
-                        <Link to={findCategoryOnMain(categories, el.category).route}><CartItemPic imageUrl={el.pic}/>
+                        <Link to={findCategoryOnMain(main, el.category).route}><CartItemPic imageUrl={el.pic}/>
                         </Link>
                         <CartItemDesc>
                             <div>{el.name}</div>
@@ -62,7 +63,7 @@ const mapStateToProps = createStructuredSelector({
     visible: selectVisible,
     userStatus: selectUserStatus,
     cart: selectCart,
-    categories: selectCategories,
+    main: selectMain,
 });
 
 export default connect(mapStateToProps, {toggleCart, cartItemDecrease, cartItemRemove, cartItemAdd})(CartComponent);

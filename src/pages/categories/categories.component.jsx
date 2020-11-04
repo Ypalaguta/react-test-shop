@@ -7,7 +7,7 @@ function CategoriesPage(props) {
     return (
         <Switch>
             <Route path={['/categories/overalls','/categories/socks', '/categories/hats', '/categories/dogs', '/categories/cats']} component={CategoryItems} />
-            <Redirect to='/' />
+            {/*<Redirect to='/' />*/}
         </Switch>
     );
 }
