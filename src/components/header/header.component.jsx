@@ -5,6 +5,8 @@ import HeaderIcon from '../header-icon/header-icon.styles'
 
 import {default as HeaderContainer, HeaderLink, IconLink, LinkLike} from './header.styles'
 import CartComponent from "../cart-popup/cart.component";
+import {createStructuredSelector} from "reselect";
+import {selectCart} from "../../redux/cart/cart.selectors";
 
 const countAndGetItemsCount = (cartObject) => {
     let items = 0;
@@ -33,6 +35,8 @@ function Header(props) {
     );
 }
 
-export default connect(store=>({
-    cart: store.cart
-}), {toggleCart})(Header);
+const mapStateToProps = createStructuredSelector({
+    cart: selectCart
+});
+
+export default connect(mapStateToProps, {toggleCart})(Header);

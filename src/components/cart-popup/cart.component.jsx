@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import {toggleCart, cartItemDecrease, cartItemRemove, cartItemAdd} from '../../redux/cart/cart.actions'
 import {Link} from 'react-router-dom';
 import {Add, Remove, Close} from '@material-ui/icons';
+import {createStructuredSelector} from "reselect";
+import {selectCart, selectVisible} from "../../redux/cart/cart.selectors";
+import {selectCategories} from "../../redux/categories/categories.selectors";
+import {selectUserStatus} from "../../redux/user/user.selectors";
 
 import {
     CartContainer,
@@ -54,9 +58,11 @@ function CartComponent(props) {
     ) : null
 }
 
-export default connect(store => ({
-    visible: store.cart.visible,
-    userStatus: !!store.user.currentUser,
-    cart: store.cart,
-    categories: store.main,
-}), {toggleCart, cartItemDecrease, cartItemRemove, cartItemAdd})(CartComponent);
+const mapStateToProps = createStructuredSelector({
+    visible: selectVisible,
+    userStatus: selectUserStatus,
+    cart: selectCart,
+    categories: selectCategories,
+});
+
+export default connect(mapStateToProps, {toggleCart, cartItemDecrease, cartItemRemove, cartItemAdd})(CartComponent);

@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 // import {defaut as MainPageContainer} from './main.styles'
 import { default as MainPageContainer, LargeCategory, MediumCategory, Bg} from './main.styles'
+import {createStructuredSelector} from "reselect";
+import {selectMain} from "../../redux/main/main.selectors";
 
 function MainPage(props) {
     const {main} = props
@@ -23,6 +25,8 @@ function MainPage(props) {
     );
 }
 
-export default connect(store=>({
-    main: store.main
-}))(MainPage);
+const mapStateToProps = createStructuredSelector({
+    main: selectMain
+})
+
+export default connect(mapStateToProps)(MainPage);
