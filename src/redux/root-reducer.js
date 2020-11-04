@@ -7,6 +7,7 @@ import cartReducer from "./cart/cart.reducer";
 import mainReducer from "./main/main.reducer";
 import categoriesReducer from "./categories/categories.reducer";
 
+
 const persistConfig = {
     key: 'root',
     storage,

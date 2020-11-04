@@ -22,7 +22,6 @@ export const AuthContainer = styled.div`
         margin-top:8px;
     }
 `;
-
 export const ButtonsRow = styled.div`
     display: flex;
     margin-top: 31px;
