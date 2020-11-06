@@ -11,7 +11,7 @@ import ContactsPage from './pages/contacts/contacts.component'
 import AuthPage from './pages/auth/auth.component'
 import CheckoutPage from './pages/checkout/checkout.component'
 import {createStructuredSelector} from "reselect";
-import {selectUserStatus} from "./redux/user/user.selectors";
+import {selectUser, selectUserStatus} from "./redux/user/user.selectors";
 
 function App(props) {
     const {userStatus} = props;

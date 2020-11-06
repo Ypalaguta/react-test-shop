@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {AuthContainer, ButtonsRow} from './auth.styles';
 import {Button, TextField} from "@material-ui/core";
-import {signInWithGoogle} from "../../firebase/firebase.utils";
 import InputWithAdornmentComponent from "../../components/input-with-adornment/input-with-adornment.component";
+
+import {userCredSignInStart, userCredSignUpStart, userGoogleAuthStart} from "../../redux/user/user.actions";
+import {connect} from "react-redux";
 
 const INITIAL_STATE = {
     signInEmail: {value: '', touched: false, error: ''},
@@ -16,6 +18,7 @@ const INITIAL_STATE = {
 }
 
 function AuthPage(props) {
+    const {userCredSignInStart, userCredSignUpStart, userGoogleAuthStart} = props;
     const [formFields, setFormFields] = useState(INITIAL_STATE);
     const formatErrStatus = (name) => {
         // console.log('name',name)
@@ -26,12 +29,14 @@ function AuthPage(props) {
     const handleSubmit = (type) => event => {
         if (type === 'signIn') {
             if (!formFields.signInEmail.error && !formFields.signInPassword.error) {
-                console.log('handle sign in')
+                userCredSignInStart(formFields.signInEmail.value, formFields.signInPassword.value);
+                // console.log('handle sign in')
             }
         } else if (type === 'signUp') {
             if (!formFields.displayName.error && !formFields.signUpEmail.error && !formFields.signUpPassword.error &&
                 !formFields.signUpConfirmPassword.error) {
-                console.log('handle sign up')
+                userCredSignUpStart(formFields.displayName.value, formFields.signUpEmail.value, formFields.signUpPassword.value);
+                // console.log('handle sign up')
             }
         }
     }
@@ -86,7 +91,7 @@ function AuthPage(props) {
                                              helperText={formatHelperText('signInPassword')}/>
                 <ButtonsRow>
                     <Button color="primary" onClick={handleSubmit('signIn')}>Sign in</Button>
-                    <Button variant="contained" color="primary" onClick={signInWithGoogle}>Sign in with
+                    <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign in with
                         Google</Button>
                 </ButtonsRow>
             </div>
@@ -107,7 +112,7 @@ function AuthPage(props) {
                                              helperText={formatHelperText('signUpConfirmPassword')}/>
                 <ButtonsRow>
                     <Button color="primary" onClick={handleSubmit('signUp')}>Sign up</Button>
-                    <Button variant="contained" color="primary" onClick={signInWithGoogle}>Sign up with
+                    <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign up with
                         Google</Button>
                 </ButtonsRow>
             </div>
@@ -117,4 +122,4 @@ function AuthPage(props) {
 
 }
 
-export default AuthPage;
+export default connect(null, {userCredSignInStart, userCredSignUpStart, userGoogleAuthStart})(AuthPage);
