@@ -36,7 +36,9 @@ export const ButtonsRow = styled.div`
     justify-content: space-between;
 `;
 export const HiddenWrap = styled.div`
-    display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
+    @media screen and (max-width:800px) {
+        display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
+    }
 `;
 export const HiderBlock = styled.div`
     margin-top: 16px;
@@ -44,5 +46,8 @@ export const HiderBlock = styled.div`
     font-weight: bold;
     font-size: 19px;
     text-align: right;
-    display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
+    display:none;
+    @media screen and (max-width:800px) {
+        display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
+    }
 `;
