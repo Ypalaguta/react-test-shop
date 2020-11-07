@@ -35,3 +35,14 @@ export const RemoveOneBlock = styled.div`
 export const RemoveBlock = styled.div`
     cursor: pointer;
 `;
+
+export const TotalBlockWrap = styled.div`
+    display: flex;
+   
+`;
+
+export const TotalTextBlock = styled.div`
+    /*height:50px;*/
+    margin-right:30px;
+`;
+
