@@ -6,6 +6,11 @@ export const CategoryPicture = styled.div`
     background-image: ${({imageUrl}) => `url(${imageUrl})`};
     background-position: center center;
     background-size: cover;
+        @media screen and (max-width:800px) {
+        margin: 0px;
+        width: 150px;
+        height: 150px;
+    }
 `;
 
 export const CategoryContainer = styled.div`
@@ -15,6 +20,10 @@ export const CategoryContainer = styled.div`
     margin-top: 30px;
     &:hover>.addToCart {
         opacity: 1;
+    }
+    @media screen and (max-width:800px) {
+        margin: 13px;
+        width: 150px;
     }
 `;
 
@@ -31,4 +40,8 @@ export const AddToCart = styled.div`
     cursor: pointer;
     margin-left: 43px;
     margin-top: 78px;
+    @media screen and (max-width:800px) {
+        margin-left: 25px;
+        margin-top: 52px;
+    }
 `;

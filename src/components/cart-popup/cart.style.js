@@ -11,15 +11,25 @@ export const CartContainer = styled.div`
     z-index: 999;
     background-color: rgb(255 255 255 / 82%);
     padding: 7px;
+    @media screen and (max-width: 800px){
+        height: 100%;
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        padding: 15px;
+    }
 `;
 
 export const ButtonLink = styled(Link)`
     display: flex;
-    width: 266px;
+    width: 100%;
     left: 0px;
     place-content: center;
     position: absolute;
     bottom: 10px;
+    @media screen and (max-width: 800px){
+        bottom:auto;
+    }
 `;
 
 export const CartItemsWrap = styled.div`
@@ -62,4 +72,12 @@ export const RemoveBlock = styled.div`
     align-self: center;
     margin-left: auto;
     cursor: pointer;
+`;
+export const MobileButton = styled.div`
+    text-align: center;
+    margin: 23px;
+    display: none;
+    @media screen and (max-width: 800px){
+        display: block;
+    }
 `;

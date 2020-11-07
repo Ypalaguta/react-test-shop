@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 export default styled.div`
     display:flex;
     flex-wrap: wrap;
+    overflow: hidden;
 `;
 
 const categoriesBasis = `
@@ -32,6 +33,11 @@ export const MediumCategory = styled(Link)`
     height: 240px;
     border: 1px solid black;
     flex: auto;
+    @media screen and (max-width:800px) {
+        min-width: calc(100% - 10px);
+        height: 184px;
+        margin-bottom: 10px;
+    }
 `;
 
 export const LargeCategory = styled(Link)`
@@ -40,6 +46,9 @@ export const LargeCategory = styled(Link)`
     border: 1px solid black;
     flex: 1 1 auto;
     margin-top: 9px;
+    @media screen and (max-width:800px) {
+        height: 184px;
+    }
 `;
 
 export const Bg = styled.div`

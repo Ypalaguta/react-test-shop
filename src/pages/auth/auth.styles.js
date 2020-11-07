@@ -10,6 +10,9 @@ export const AuthContainer = styled.div`
     }
     &>div {
         width:310px;
+            @media screen and (max-width:800px) {
+        width:100%
+    }
     }
     &>div>span {
         font-size: 18px;
@@ -21,9 +24,25 @@ export const AuthContainer = styled.div`
         width:100%;
         margin-top:8px;
     }
+    @media screen and (max-width:800px) {
+        padding:15px;
+        width:100%;
+        flex-wrap:wrap;
+    }
 `;
 export const ButtonsRow = styled.div`
     display: flex;
     margin-top: 31px;
     justify-content: space-between;
+`;
+export const HiddenWrap = styled.div`
+    display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
+`;
+export const HiderBlock = styled.div`
+    margin-top: 16px;
+    color: #0084ab;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: right;
+    display: ${({hiddenBlock})=>hiddenBlock?'none':'block'};
 `;

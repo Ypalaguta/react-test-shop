@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {AuthContainer, ButtonsRow} from './auth.styles';
+import {AuthContainer, ButtonsRow, HiderBlock, HiddenWrap} from './auth.styles';
 import {Button, TextField} from "@material-ui/core";
 import InputWithAdornmentComponent from "../../components/input-with-adornment/input-with-adornment.component";
 
@@ -20,6 +20,8 @@ const INITIAL_STATE = {
 function AuthPage(props) {
     const {userCredSignInStart, userCredSignUpStart, userGoogleAuthStart} = props;
     const [formFields, setFormFields] = useState(INITIAL_STATE);
+    const [hiddenBlock, setHiddenBlock] = useState(false)
+    const hideBlock = () => setHiddenBlock(!hiddenBlock)
     const formatErrStatus = (name) => {
         // console.log('name',name)
         // console.log('formFields[name].touched', formFields[name].touched)
@@ -79,7 +81,7 @@ function AuthPage(props) {
     // console.log(formFields)
     return (
         <AuthContainer>
-            <div>
+            <HiddenWrap hiddenBlock={hiddenBlock} onClick={hideBlock}>
                 <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <TextField id="signInEmail-standard-basic" label="Email" name='signInEmail' onBlur={handleBlur}
@@ -94,9 +96,10 @@ function AuthPage(props) {
                     <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign in with
                         Google</Button>
                 </ButtonsRow>
-            </div>
-            <div>
-                <h2>I do not have a account</h2>
+            </HiddenWrap>
+            <HiderBlock hiddenBlock={hiddenBlock} onClick={hideBlock}>I do not have an account</HiderBlock>
+            <HiddenWrap hiddenBlock={!hiddenBlock} onClick={hideBlock}>
+                <h2>I do not have an account</h2>
                 <span>Sign up with your email and password</span>
                 <TextField id="displayName-standard-basic" label="Display name" name='displayName' onBlur={handleBlur}
                            onInput={handleInput}
@@ -115,7 +118,8 @@ function AuthPage(props) {
                     <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign up with
                         Google</Button>
                 </ButtonsRow>
-            </div>
+            </HiddenWrap>
+            <HiderBlock hiddenBlock={!hiddenBlock} onClick={hideBlock}>I already have an account</HiderBlock>
         </AuthContainer>
     )
 

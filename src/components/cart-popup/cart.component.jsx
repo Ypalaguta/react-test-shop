@@ -19,6 +19,7 @@ import {
     RemoveBlock,
     AddBlock,
     RemoveOneBlock,
+    MobileButton,
 } from './cart.style';
 import {selectMain} from "../../redux/main/main.selectors";
 
@@ -31,6 +32,9 @@ function CartComponent(props) {
     return props.visible ? (
         <CartContainer>
             <CartItemsWrap>
+                <MobileButton onClick={toggleCart}>
+                    <Button color='primary' size='large'>close</Button>
+                </MobileButton>
                 {Object.keys(cart.items).map((key, num) => {
                     let el = cart.items[key];
                     return <CartItem key={num}>
@@ -39,12 +43,12 @@ function CartComponent(props) {
                         <CartItemDesc>
                             <div>{el.name}</div>
                             <div>
-                                <RemoveOneBlock onClick={()=>cartItemDecrease(el)}><Remove/></RemoveOneBlock>
+                                <RemoveOneBlock onClick={() => cartItemDecrease(el)}><Remove/></RemoveOneBlock>
                                 <span>{el.count}</span> x <span>${el.price}</span>
-                                <AddBlock onClick={()=>cartItemAdd(el)}><Add/></AddBlock>
+                                <AddBlock onClick={() => cartItemAdd(el)}><Add/></AddBlock>
                             </div>
                         </CartItemDesc>
-                        <RemoveBlock onClick={()=>cartItemRemove(el)}>
+                        <RemoveBlock onClick={() => cartItemRemove(el)}>
                             <Close/>
                         </RemoveBlock>
                     </CartItem>
