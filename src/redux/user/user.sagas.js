@@ -9,7 +9,7 @@ import {
     userSignOutFailure,
     userSignOutSuccess,
     userGoogleAuthSuccess,
-    userGoogleAuthFailure
+    userGoogleAuthFailure, userAuthChecked
 } from './user.actions';
 
 export function* credSignUp({payload: {displayName, email, password}}) {
@@ -56,8 +56,8 @@ export function* credSignOut() {
 function* checkUser() {
     try {
         const user = yield getCurrentUser();
-        if (!user) return;
-        yield put(userAutoSignInSuccess(user))
+        if (!user) yield put(userAuthChecked());
+        else yield put(userAutoSignInSuccess(user))
     } catch (err) {
         yield put(userAutoSignInFailure(err))
     }

@@ -11,11 +11,12 @@ import ContactsPage from './pages/contacts/contacts.component'
 import AuthPage from './pages/auth/auth.component'
 import CheckoutPage from './pages/checkout/checkout.component'
 import {createStructuredSelector} from "reselect";
-import {selectUser, selectUserStatus} from "./redux/user/user.selectors";
+import {selectUser, selectUserChecked, selectUserStatus} from "./redux/user/user.selectors";
+import Loader from './components/loader/loader.components';
 
 function App(props) {
-    const {userStatus} = props;
-    return (
+    const {userChecked, userStatus} = props;
+    return userChecked?(
         <div className="App">
             <GlobalStyles/>
             <Header/>
@@ -31,10 +32,11 @@ function App(props) {
                 <Route path="/" component={MainPage}/>
             </Switch>
         </div>
-    );
+    ):<Loader marginTop='150px;'/>;
 }
 
 const mapStateToProps = createStructuredSelector({
+    userChecked: selectUserChecked,
     userStatus: selectUserStatus
 });
 

@@ -2,7 +2,8 @@ import {userActionTypes} from './user.types';
 
 const INITIAL_STATE = {
     currentUser: null,
-    error: null
+    error: null,
+    userChecked: false,
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -10,7 +11,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case userActionTypes.USER_CRED_SIGNIN_SUCCESS:
         case userActionTypes.USER_AUTO_SIGNIN_SUCCESS:
         case userActionTypes.USER_GOOGLE_AUTH_SUCCESS:
-            return {...state, currentUser: action.payload.user}
+            return {...state, currentUser: action.payload.user, userChecked: true}
+        case userActionTypes.USER_AUTH_CHECKED:
+            return {...state, userChecked: true}
         case userActionTypes.USER_SIGNOUT_SUCCESS:
             return {...INITIAL_STATE}
         default:

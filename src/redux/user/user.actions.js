@@ -20,6 +20,9 @@ export const userCredSignInFailure = (err) => ({
     type: userActionTypes.USER_CRED_SIGNIN_FAILURE,
     payload: {err}
 });
+export const userAuthChecked = () => ({
+    type: userActionTypes.USER_AUTH_CHECKED,
+});
 
 export const userSignOutStart = () => ({
     type: userActionTypes.USER_SIGNOUT_START,
