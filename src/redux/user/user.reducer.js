@@ -15,7 +15,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case userActionTypes.USER_AUTH_CHECKED:
             return {...state, userChecked: true}
         case userActionTypes.USER_SIGNOUT_SUCCESS:
-            return {...INITIAL_STATE}
+            return {...INITIAL_STATE, userChecked: true}
         default:
             return state;
     }
