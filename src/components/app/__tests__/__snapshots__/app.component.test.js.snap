@@ -1,3 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`app component render snapshot 1`] = `ShallowWrapper {}`;
+exports[`App component tests app component render snapshot 1`] = `
+<div
+  className="App"
+>
+  <Memo(l) />
+  <Connect(Header) />
+  <Switch>
+    <Route
+      component={[Function]}
+      path="/categories"
+    />
+    <Route
+      component={[Function]}
+      path="/contacts"
+    />
+    <Route
+      path="/auth"
+    >
+      <Redirect
+        to="/"
+      />
+    </Route>
+    <Route
+      path="/checkout"
+    >
+      <Connect(CheckoutPage) />
+    </Route>
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "type": [Function],
+        }
+      }
+      path="/"
+    />
+  </Switch>
+</div>
+`;

@@ -14,7 +14,7 @@ import {createStructuredSelector} from "reselect";
 import {selectUser, selectUserChecked, selectUserStatus} from "../../redux/user/user.selectors";
 import Loader from '../loader/loader.components';
 
-function App(props) {
+export function App(props) {
     const {userChecked, userStatus} = props;
     // return <div>test</div>
     return userChecked?(

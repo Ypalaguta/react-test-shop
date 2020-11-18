@@ -20,7 +20,7 @@ const countAndGetItemsCount = (cartObject) => {
     return items ? `(${items})` : '';
 }
 
-function Header(props) {
+export function Header(props) {
     const {cart, userStatus, userSignOutStart} = props;
     return (<HeaderContainer>
             <HeaderIconWrap to='/'>
@@ -30,7 +30,7 @@ function Header(props) {
             </HeaderIconWrap>
             <HeaderLink to='/'>Shop</HeaderLink>
             <HeaderLink to='/contacts'>Contacts</HeaderLink>
-            {userStatus ? <LinkLike onClick={userSignOutStart}>Sign out</LinkLike> :
+            {userStatus ? <LinkLike onClick={userSignOutStart}>Sign Out</LinkLike> :
                 <HeaderLink to='/auth'>Sign In</HeaderLink>}
             <LinkLike onClick={props.toggleCart}>
                 Cart
