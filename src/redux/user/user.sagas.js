@@ -1,5 +1,5 @@
 import {takeLeading, takeLatest, put, all, call} from 'redux-saga/effects';
-import {auth, getCurrentUser, signInWithGoogle} from "../../firebase/firebase.utils";
+import {auth, getCurrentUser, signInWithGoogle, provider} from "../../firebase/firebase.utils";
 import {userActionTypes} from "./user.types";
 import {
     userCredSignUpFailure,
@@ -34,7 +34,8 @@ export function* credSignIn({payload: {email, password}}) {
 
 export function* googleAuth() {
     try {
-        const user = yield signInWithGoogle();
+        // const user = yield signInWithGoogle();   //
+        const user = yield call([auth, auth.signInWithPopup], provider);    //saga properly testing
         if (!user) return;
         yield put(userGoogleAuthSuccess(user));
     } catch (err) {

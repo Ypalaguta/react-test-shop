@@ -45,14 +45,14 @@ export const testRoute = (wrapper, expectedPath) => {
     });
 };
 
-export const testWatchSaga = (actionType, watchSaga, workSaga) => {
+export const testWatchSaga = (actionType, watchSaga, workSaga, effect=takeEvery) => {
     describe(`${watchSaga.name}`, () => {
         const watcher = watchSaga();
 
         test(`should listen to ${actionType} and yield ${workSaga.name}`, () => {
             const actualYield = watcher.next().value;
-            const expectedYield = takeEvery(actionType, workSaga);
-
+            const expectedYield = effect(actionType, workSaga);
+            console.log(actualYield)
             expect(actualYield).toEqual(expectedYield);
         });
     });
