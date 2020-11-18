@@ -92,7 +92,7 @@ function AuthPage(props) {
                                              error={formatErrStatus('signInPassword')}
                                              helperText={formatHelperText('signInPassword')}/>
                 <ButtonsRow>
-                    <Button color="primary" onClick={handleSubmit('signIn')}>Sign in</Button>
+                    <Button color="primary" onClick={handleSubmtest('signIn')}>Sign in</Button>
                     <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign in with
                         Google</Button>
                 </ButtonsRow>
@@ -114,7 +114,7 @@ function AuthPage(props) {
                                              error={formatErrStatus('signUpConfirmPassword')}
                                              helperText={formatHelperText('signUpConfirmPassword')}/>
                 <ButtonsRow>
-                    <Button color="primary" onClick={handleSubmit('signUp')}>Sign up</Button>
+                    <Button color="primary" onClick={handleSubmtest('signUp')}>Sign up</Button>
                     <Button variant="contained" color="primary" onClick={userGoogleAuthStart}>Sign up with
                         Google</Button>
                 </ButtonsRow>
